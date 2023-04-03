@@ -34,6 +34,7 @@ namespace LoadCell_OwnProgram
         //Creating an instance of ActuatorClass, LoadCellClass within TestingClass
         private ActuatorClass actuator = new ActuatorClass();
         private LoadCellClass loadCell = new LoadCellClass();
+        private CameraClass camera = new CameraClass();
         //private ThermoClass thermocoupleData = new ThermoClass("COM9");
 
 
@@ -79,6 +80,7 @@ namespace LoadCell_OwnProgram
             FirstExportTime = DateTime.Now;//Timer starts when button is pressed
             Task loadCellTask = Task.Run(() => loadCell.LoadCell(MainForm.width, MainForm.thick, ref force, ref stress));
             Task actuatorTask = Task.Run(() => actuator.LinearActuator(ref displacement));
+            Task cameraTask = Task.Run(() => camera.MainMethodRun());
         }
 
 
